@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="STAFFCRUDDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="StaffMicroservicesDB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OtherName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StaffID" Type="Int64" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="Int64" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AccountNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="BankID" Type="Int64" Nullable="false" />
+    <Property Name="BVNNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AccountName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+    <Property Name="DateOfEmploymentTermination" Type="DateTime" Precision="3" />
+    <Property Name="PayGroupID" Type="Int64" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="StaffMicroservicesDB1" Relationship="Self.FK_StaffMicroservicesDB_StaffMicroservicesDB" FromRole="StaffMicroservicesDB" ToRole="StaffMicroservicesDB1" />
+    <NavigationProperty Name="StaffMicroservicesDB2" Relationship="Self.FK_StaffMicroservicesDB_StaffMicroservicesDB" FromRole="StaffMicroservicesDB1" ToRole="StaffMicroservicesDB" />
+  </EntityType>
+  <Association Name="FK_StaffMicroservicesDB_StaffMicroservicesDB">
+    <End Role="StaffMicroservicesDB" Type="Self.StaffMicroservicesDB" Multiplicity="1" />
+    <End Role="StaffMicroservicesDB1" Type="Self.StaffMicroservicesDB" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="StaffMicroservicesDB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StaffMicroservicesDB1">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="STAFFCRUDDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="StaffMicroservicesDBs" EntityType="Self.StaffMicroservicesDB" />
+    <AssociationSet Name="FK_StaffMicroservicesDB_StaffMicroservicesDB" Association="Self.FK_StaffMicroservicesDB_StaffMicroservicesDB">
+      <End Role="StaffMicroservicesDB" EntitySet="StaffMicroservicesDBs" />
+      <End Role="StaffMicroservicesDB1" EntitySet="StaffMicroservicesDBs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

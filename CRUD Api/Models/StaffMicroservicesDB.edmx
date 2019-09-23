@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="STAFFCRUDDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="StaffMicroservicesDB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="OtherName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="StaffID" Type="bigint" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="bigint" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AccountNumber" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="BankID" Type="bigint" Nullable="false" />
+          <Property Name="BVNNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="DateOfEmploymentTermination" Type="datetime" />
+          <Property Name="PayGroupID" Type="bigint" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_StaffMicroservicesDB_StaffMicroservicesDB">
+          <End Role="StaffMicroservicesDB" Type="Self.StaffMicroservicesDB" Multiplicity="1" />
+          <End Role="StaffMicroservicesDB1" Type="Self.StaffMicroservicesDB" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="StaffMicroservicesDB">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StaffMicroservicesDB1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="STAFFCRUDDBModelStoreContainer">
+          <EntitySet Name="StaffMicroservicesDB" EntityType="Self.StaffMicroservicesDB" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_StaffMicroservicesDB_StaffMicroservicesDB" Association="Self.FK_StaffMicroservicesDB_StaffMicroservicesDB">
+            <End Role="StaffMicroservicesDB" EntitySet="StaffMicroservicesDB" />
+            <End Role="StaffMicroservicesDB1" EntitySet="StaffMicroservicesDB" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="STAFFCRUDDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="StaffMicroservicesDB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OtherName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StaffID" Type="Int64" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="Int64" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="BankID" Type="Int64" Nullable="false" />
+          <Property Name="BVNNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+          <Property Name="DateOfEmploymentTermination" Type="DateTime" Precision="3" />
+          <Property Name="PayGroupID" Type="Int64" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="StaffMicroservicesDB1" Relationship="Self.FK_StaffMicroservicesDB_StaffMicroservicesDB" FromRole="StaffMicroservicesDB" ToRole="StaffMicroservicesDB1" />
+          <NavigationProperty Name="StaffMicroservicesDB2" Relationship="Self.FK_StaffMicroservicesDB_StaffMicroservicesDB" FromRole="StaffMicroservicesDB1" ToRole="StaffMicroservicesDB" />
+        </EntityType>
+        <Association Name="FK_StaffMicroservicesDB_StaffMicroservicesDB">
+          <End Role="StaffMicroservicesDB" Type="Self.StaffMicroservicesDB" Multiplicity="1" />
+          <End Role="StaffMicroservicesDB1" Type="Self.StaffMicroservicesDB" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="StaffMicroservicesDB">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StaffMicroservicesDB1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="STAFFCRUDDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="StaffMicroservicesDBs" EntityType="Self.StaffMicroservicesDB" />
+          <AssociationSet Name="FK_StaffMicroservicesDB_StaffMicroservicesDB" Association="Self.FK_StaffMicroservicesDB_StaffMicroservicesDB">
+            <End Role="StaffMicroservicesDB" EntitySet="StaffMicroservicesDBs" />
+            <End Role="StaffMicroservicesDB1" EntitySet="StaffMicroservicesDBs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="STAFFCRUDDBModelStoreContainer" CdmEntityContainer="STAFFCRUDDBEntities">
+          <EntitySetMapping Name="StaffMicroservicesDBs">
+            <EntityTypeMapping TypeName="STAFFCRUDDBModel.StaffMicroservicesDB">
+              <MappingFragment StoreEntitySet="StaffMicroservicesDB">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="OtherName" ColumnName="OtherName" />
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="BankID" ColumnName="BankID" />
+                <ScalarProperty Name="BVNNo" ColumnName="BVNNo" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateOfEmploymentTermination" ColumnName="DateOfEmploymentTermination" />
+                <ScalarProperty Name="PayGroupID" ColumnName="PayGroupID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
